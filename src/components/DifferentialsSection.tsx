@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const DifferentialsSection = () => {
@@ -36,17 +35,7 @@ const DifferentialsSection = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="ar-overlay rounded-xl overflow-hidden relative">
-            <div 
-              className="absolute inset-0 z-0"
-              style={{
-                backgroundImage: 'url("https://images.unsplash.com/photo-1460925895917-afdab827c52f")',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-engverse-blue/95 to-engverse-purple/90" />
-            </div>
+          <div className="bg-gradient-to-br from-engverse-blue to-engverse-purple rounded-xl overflow-hidden relative">
             <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-between">
               <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">+12 anos</h3>
               <div>
