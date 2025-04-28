@@ -58,9 +58,9 @@ export default {
           foreground: 'hsl(var(--card-foreground))'
         },
         engverse: {
+          blue: "#0046BE",
+          orange: "#FF6B2B",
           dark: "#1A1F2C",
-          blue: "#33C3F0",
-          purple: "#7E69AB",
           light: "#F1F0FB"
         }
       },

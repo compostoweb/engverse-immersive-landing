@@ -20,8 +20,13 @@ const Navbar = () => {
       isScrolled ? "bg-white/90 shadow-md backdrop-blur-sm py-3" : "bg-transparent py-5"
     )}>
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="flex items-center">
-          <span className="text-2xl font-bold gradient-text">Eng<span className="text-engverse-purple">Verse</span></span>
+        <a href="#" className="flex flex-col items-start">
+          <img 
+            src="/lovable-uploads/805a1499-44cd-4465-95cb-dbbcd33868c1.png" 
+            alt="EngVerse Logo" 
+            className="h-12 object-contain"
+          />
+          <span className="text-engverse-blue text-sm font-medium">Construindo Novas Dimensões</span>
         </a>
         
         {/* Mobile menu button */}
@@ -44,7 +49,7 @@ const Navbar = () => {
             <a 
               key={item} 
               href={`#${item.toLowerCase()}`} 
-              className="font-medium text-engverse-dark hover:text-engverse-blue transition duration-300"
+              className="font-medium text-engverse-blue hover:text-engverse-orange transition duration-300"
             >
               {item}
             </a>
@@ -61,7 +66,7 @@ const Navbar = () => {
               <a 
                 key={item} 
                 href={`#${item.toLowerCase()}`} 
-                className="font-medium text-engverse-dark hover:text-engverse-blue px-4 py-2"
+                className="font-medium text-engverse-blue hover:text-engverse-orange px-4 py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item}
