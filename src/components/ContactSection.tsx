@@ -1,33 +1,54 @@
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import { Phone } from "lucide-react";
+
 const ContactSection = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
     message: '',
+    phone: '',
     interest: 'Modelagem e Simulação 3D'
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const {
-      name,
-      value
-    } = e.target;
+    const { name, value } = e.target;
+    
+    if (name === 'phone') {
+      const numericValue = value.replace(/\D/g, '');
+      
+      if (numericValue.length <= 11) {
+        let formattedValue = numericValue;
+        if (numericValue.length > 2) {
+          formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice(2)}`;
+        }
+        if (numericValue.length > 7) {
+          formattedValue = `(${numericValue.slice(0, 2)}) ${numericValue.slice(2, 7)}-${numericValue.slice(7)}`;
+        }
+        
+        setFormData(prev => ({
+          ...prev,
+          [name]: formattedValue
+        }));
+        return;
+      }
+      return;
+    }
+
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulando envio do formulário
     setTimeout(() => {
       toast({
         title: "Mensagem enviada!",
@@ -39,11 +60,14 @@ const ContactSection = () => {
         email: '',
         company: '',
         message: '',
+        phone: '',
         interest: 'Modelagem e Simulação 3D'
       });
     }, 1500);
   };
-  return <section id="contato" className="section-padding">
+
+  return (
+    <section id="contato" className="section-padding">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -99,6 +123,25 @@ const ContactSection = () => {
                 </div>
                 
                 <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Telefone com DDD</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                      <Phone className="h-5 w-5 text-gray-400" />
+                    </div>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      placeholder="(XX) XXXXX-XXXX"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="w-full pl-10 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div>
                   <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-1">Área de interesse</label>
                   <select id="interest" name="interest" value={formData.interest} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent">
                     <option>Modelagem e Simulação 3D</option>
@@ -124,6 +167,8 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default ContactSection;
