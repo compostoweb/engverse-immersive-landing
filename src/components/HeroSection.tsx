@@ -24,7 +24,7 @@ const HeroSection = () => {
             </div>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight">
-              Transforme sua <span className="bg-clip-text text-transparent bg-gradient from-engverse-orange">engenharia</span> com tecnologias imersivas
+              Transforme sua <span className="bg-clip-text text-transparent bg-gradient-to-r from-engverse-orange via-engverse-blue to-engverse-purple">engenharia</span> com tecnologias imersivas
             </h1>
             
             <p className="text-xl text-gray-300 mb-8 leading-relaxed">
