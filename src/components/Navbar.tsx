@@ -1,12 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -24,12 +21,10 @@ const Navbar = () => {
     } else {
       document.body.style.overflow = '';
     }
-    
     return () => {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
-
   return <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", isScrolled ? "bg-[#0F172A]/90 backdrop-blur-lg shadow-lg" : "bg-transparent")}>
       <div className="container mx-auto px-4 my-[15px]">
         <div className="flex justify-between items-center h-20">
@@ -57,14 +52,9 @@ const Navbar = () => {
       </div>
       
       {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-[#0F172A] md:hidden z-40">
+      {isMobileMenuOpen && <div className="fixed inset-0 bg-[#0F172A] md:hidden z-40">
           {/* Close button */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-            aria-label="Close menu"
-          >
+          <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors" aria-label="Close menu">
             <X className="h-6 w-6" />
           </button>
 
@@ -100,15 +90,13 @@ const Navbar = () => {
                   </div>
                   <div>
                     <p className="text-white text-sm">Telefone</p>
-                    <a href="tel:+551199999999" className="text-gray-400 text-sm hover:text-white">+55 (11) 9999-9999</a>
+                    <a href="tel:+551199999999" className="text-gray-400 text-sm hover:text-white">+55 (31) 98365-4721</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        </div>}
     </nav>;
 };
-
 export default Navbar;
