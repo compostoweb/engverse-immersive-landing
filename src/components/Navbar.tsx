@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,10 +18,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <a href="#" className="flex items-center space-x-2">
-            <div className="bg-white rounded-xl">
+            <div className="bg-white rounded-xl px-[5px]">
               <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-16 w-auto object-contain" />
             </div>
-            
           </a>
           
           {/* Desktop menu */}
@@ -80,4 +80,5 @@ const Navbar = () => {
       </div>
     </nav>;
 };
+
 export default Navbar;

@@ -1,14 +1,14 @@
 import React from 'react';
+
 const Footer = () => {
   return <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-white rounded-xl">
+              <div className="bg-white rounded-xl px-[5px]">
                 <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-16 w-auto object-contain" />
               </div>
-              
             </div>
             
             <p className="text-gray-400 mb-6 max-w-md">
@@ -85,4 +85,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
