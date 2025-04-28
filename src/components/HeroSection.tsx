@@ -115,7 +115,7 @@ const HeroSection = () => {
           value: '+80%',
           label: 'Retenção de Informação'
         }, {
-          value: '+120',
+          value: '+30',
           label: 'Projetos Entregues'
         }].map((stat, index) => <div key={index} className="text-center">
               <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-engverse-orange to-engverse-blue">{stat.value}</p>
@@ -125,7 +125,7 @@ const HeroSection = () => {
       </div>
       
       {/* Bottom decorative divider */}
-      <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-engverse-orange via-engverse-blue to-engverse-purple"></div>
+      <div className="absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-engverse-orange via-engverse-blue to-engverse-orange"></div>
     </section>;
 };
 export default HeroSection;
