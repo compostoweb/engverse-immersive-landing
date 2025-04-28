@@ -45,6 +45,15 @@ const Navbar = () => {
       
       {/* Mobile menu */}
       <div className={cn("fixed inset-0 bg-[#0F172A]/95 backdrop-blur-lg md:hidden z-40 transition-transform duration-300 transform", isMobileMenuOpen ? "translate-x-0" : "translate-x-full")}>
+        {/* Close button */}
+        <button 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
+          aria-label="Close menu"
+        >
+          <X className="h-6 w-6" />
+        </button>
+
         <div className="pt-24 pb-8 px-8">
           <div className="flex flex-col space-y-4">
             {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Início' ? 'hero' : item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
