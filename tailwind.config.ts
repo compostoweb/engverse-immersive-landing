@@ -62,7 +62,7 @@ export default {
           orange: "#FF6B2B",
           dark: "#1A1F2C",
           light: "#F1F0FB",
-          purple: "#8B5CF6" // Adding the missing purple color
+          purple: "#8B5CF6"
         }
       },
       borderRadius: {
@@ -86,13 +86,25 @@ export default {
         'gradient-x': {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' }
+        },
+        'spin-slow': {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'float': 'float 6s ease-in-out infinite',
-        'gradient-x': 'gradient-x 15s ease infinite'
+        'gradient-x': 'gradient-x 15s ease infinite',
+        'spin-slow': 'spin-slow 15s linear infinite'
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        heading: ['Sora', 'sans-serif']
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
       }
     }
   },
