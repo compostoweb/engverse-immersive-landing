@@ -1,32 +1,19 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
-    <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled ? "bg-white/90 shadow-md backdrop-blur-sm py-3" : "bg-transparent py-5"
-    )}>
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md py-3">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <a href="#" className="flex flex-col items-start">
+        <a href="#" className="flex items-center">
           <img 
-            src="/lovable-uploads/805a1499-44cd-4465-95cb-dbbcd33868c1.png" 
+            src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
             alt="EngVerse Logo" 
             className="h-12 object-contain"
           />
-          <span className="text-engverse-blue text-sm font-medium">Construindo Novas Dimensões</span>
         </a>
         
         {/* Mobile menu button */}
