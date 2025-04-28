@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer = () => {
@@ -7,12 +6,17 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           <div className="md:col-span-2">
-            <div className="flex items-center mb-6">
-              <img 
-                src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
-                alt="EngVerse Logo" 
-                className="h-8 object-contain mr-2"
-              />
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="bg-white p-3 rounded-xl">
+                <img 
+                  src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
+                  alt="EngVerse Logo" 
+                  className="h-8 object-contain"
+                />
+              </div>
+              <span className="text-gray-400 text-sm">
+                Transformando a Engenharia através da Realidade Virtual
+              </span>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
               Transformando o setor de engenharia através de tecnologias imersivas 

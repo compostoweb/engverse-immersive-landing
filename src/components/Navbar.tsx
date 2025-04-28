@@ -25,12 +25,17 @@ const Navbar = () => {
     )}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
-          <a href="#" className="flex items-center">
-            <img 
-              src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
-              alt="EngVerse Logo" 
-              className="h-12 object-contain"
-            />
+          <a href="#" className="flex items-center space-x-3">
+            <div className="bg-white p-3 rounded-xl">
+              <img 
+                src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
+                alt="EngVerse Logo" 
+                className="h-8 object-contain"
+              />
+            </div>
+            <span className="text-white text-sm font-medium hidden md:block">
+              Transformando a Engenharia através da Realidade Virtual
+            </span>
           </a>
           
           {/* Desktop menu */}
