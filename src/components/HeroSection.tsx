@@ -1,74 +1,95 @@
 
 import React from 'react';
 import { cn } from "@/lib/utils";
-const HeroSection = () => {
-  return <section className="pt-32 pb-20 md:pt-40 md:pb-32 hero-gradient overflow-hidden relative">
-    {/* Background image with overlay */}
-    <div className="absolute inset-0 z-0" style={{
-      backgroundImage: 'url("https://images.unsplash.com/photo-1605810230434-7631ac76ec81")',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center'
-    }}>
-      <div className="absolute inset-0 bg-gradient-to-r from-engverse-dark/95 to-engverse-dark/80" />
-    </div>
 
-    <div className="container mx-auto px-4 relative z-10">
-      <div className="grid md:grid-cols-2 gap-12 items-center relative">
-        <div className="text-center md:text-left md:pr-8">
-          <div className="relative">
-            <div className="absolute -left-8 -top-8 w-24 h-24 bg-engverse-purple/10 rounded-full blur-2xl"></div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Transformando a Engenharia com Tecnologias Imersivas
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-engverse-dark via-engverse-dark/95 to-engverse-purple/30">
+      {/* Decorative elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-engverse-purple/5 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-1/4 -left-1/4 w-[600px] h-[600px] bg-engverse-blue/5 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10 pt-32 lg:pt-40">
+        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
+          {/* Left Content */}
+          <div className="flex-1 text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
+            <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-engverse-purple/30 bg-engverse-purple/10 backdrop-blur-sm">
+              <span className="text-sm font-medium text-engverse-purple">Inovação em Engenharia</span>
+            </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-6 leading-[1.1]">
+              Tecnologias Imersivas para{' '}
+              <span className="relative">
+                <span className="relative z-10 bg-gradient-to-r from-engverse-blue to-engverse-purple bg-clip-text text-transparent">
+                  Engenharia
+                </span>
+                <span className="absolute inset-x-0 bottom-0 h-3 bg-gradient-to-r from-engverse-blue/30 to-engverse-purple/30 blur-sm"></span>
+              </span>
             </h1>
-          </div>
-          <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg mx-auto md:mx-0">Soluções de Realidade Aumentada, Virtual e Mista que elevam segurança, produtividade e precisão em projetos de engenharia.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a href="#contato" className="button-primary">
-              Solicitar Demonstração
-            </a>
-            <a href="#serviços" className="button-secondary">
-              Nossos Serviços
-            </a>
-          </div>
-        </div>
-        
-        <div className={cn("hidden md:block relative", "before:absolute before:inset-0 before:bg-gradient-to-r before:from-engverse-blue/30 before:to-engverse-purple/30 before:rounded-lg before:z-10", "after:absolute after:w-40 after:h-40 after:bg-engverse-purple/20 after:rounded-full after:blur-3xl after:top-1/4 after:-right-20 after:z-0")}>
-          <div className="relative z-20 animate-float">
-            <div className="bg-white/10 backdrop-blur-sm p-2 rounded-lg border border-white/20 mb-4">
-              <div className="grid grid-cols-2 gap-2">
-                {[1, 2].map(index => <div key={index} className="aspect-video bg-gradient-to-br from-engverse-blue/30 to-engverse-purple/30 rounded-md flex items-center justify-center">
-                  <div className="w-full h-full flex items-center justify-center">
-                    <img alt="3D VR Headset" src="/lovable-uploads/372b6de2-e2e2-4bc2-b5a1-3056c3b00f8b.jpg" className="w-16 h-16 rounded-md object-cover" />
-                  </div>
-                </div>)}
-              </div>
-            </div>
             
-            <div className="bg-white/10 backdrop-blur-sm p-2 rounded-lg border border-white/20 relative">
-              <div className="relative aspect-[4/3] bg-gradient-to-br from-engverse-dark to-engverse-purple/60 rounded-md overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-3 p-4 w-full">
-                    {[...Array(9)].map((_, index) => <div key={index} className={cn("h-12 rounded-md bg-white/10", index % 3 === 0 && "bg-engverse-blue/30", index % 4 === 0 && "bg-engverse-purple/30")} />)}
+            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-xl">
+              Potencialize seus projetos com soluções avançadas de Realidade Virtual, 
+              Aumentada e Mista para maior segurança e produtividade.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <a href="#contato" className="button-primary">
+                Solicitar Demonstração
+              </a>
+              <a href="#serviços" className="button-secondary">
+                Nossos Serviços
+              </a>
+            </div>
+          </div>
+
+          {/* Right Content - 3D Visualization Area */}
+          <div className="flex-1 w-full max-w-xl">
+            <div className="relative">
+              {/* Main display area */}
+              <div className="relative bg-gradient-to-br from-engverse-dark/80 to-engverse-purple/20 rounded-2xl border border-white/10 backdrop-blur-sm p-6 shadow-2xl">
+                <div className="aspect-square rounded-lg overflow-hidden">
+                  <img 
+                    src="/lovable-uploads/372b6de2-e2e2-4bc2-b5a1-3056c3b00f8b.jpg"
+                    alt="VR Engineering Visualization"
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Floating cards */}
+                <div className="absolute -left-8 top-1/4 bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/20 shadow-xl animate-float">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-engverse-blue/30"></div>
+                    <div>
+                      <div className="h-2 w-20 bg-white/20 rounded-full"></div>
+                      <div className="h-2 w-16 bg-white/10 rounded-full mt-2"></div>
+                    </div>
                   </div>
                 </div>
-                
-                <div className="absolute bottom-2 right-2 bg-white/20 backdrop-blur-sm rounded-full p-1 px-3">
-                  <span className="text-white text-xs">AR/VR View</span>
+
+                <div className="absolute -right-8 bottom-1/4 bg-white/10 backdrop-blur-md p-4 rounded-lg border border-white/20 shadow-xl animate-float" style={{ animationDelay: '1s' }}>
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-engverse-purple/30"></div>
+                    <div>
+                      <div className="h-2 w-20 bg-white/20 rounded-full"></div>
+                      <div className="h-2 w-16 bg-white/10 rounded-full mt-2"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
+
+              {/* Background glow effects */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-engverse-blue/20 to-engverse-purple/20 rounded-3xl blur-2xl -z-10"></div>
             </div>
-            
-            {/* Decorative elements */}
-            <div className="absolute -top-10 -left-10 w-20 h-20 bg-engverse-blue/20 rounded-full blur-2xl"></div>
-            <div className="absolute -bottom-8 right-12 w-16 h-16 bg-engverse-purple/30 rounded-full blur-xl"></div>
           </div>
         </div>
       </div>
-    </div>
-    
-    {/* Background decorative elements */}
-    <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-engverse-blue/5 rounded-full blur-3xl"></div>
-    <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-engverse-purple/5 rounded-full blur-2xl"></div>
-  </section>;
+
+      {/* Bottom decorative gradient */}
+      <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-engverse-purple/50 to-transparent"></div>
+    </section>
+  );
 };
+
 export default HeroSection;
