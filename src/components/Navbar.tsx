@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -14,7 +16,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Add a useEffect to prevent scrolling when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -25,6 +26,7 @@ const Navbar = () => {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
+
   return <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", isScrolled ? "bg-[#0F172A]/90 backdrop-blur-lg shadow-lg" : "bg-transparent")}>
       <div className="container mx-auto px-4 my-[15px]">
         <div className="flex justify-between items-center h-20">
@@ -34,9 +36,8 @@ const Navbar = () => {
             </div>
           </a>
           
-          {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-1">
-            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Início' ? 'hero' : item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
+            {["Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
                 {item}
               </a>)}
             <a href="#contato" className="ml-4 px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors">
@@ -44,23 +45,20 @@ const Navbar = () => {
             </a>
           </div>
           
-          {/* Mobile menu button */}
           <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-white focus:outline-none" aria-label="Toggle menu">
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
       
-      {/* Mobile menu */}
       {isMobileMenuOpen && <div className="fixed inset-0 bg-[#0F172A] md:hidden z-40">
-          {/* Close button */}
           <button onClick={() => setIsMobileMenuOpen(false)} className="absolute top-6 right-6 text-white p-2 hover:bg-white/10 rounded-lg transition-colors" aria-label="Close menu">
             <X className="h-6 w-6" />
           </button>
 
           <div className="pt-24 pb-8 px-8">
             <div className="flex flex-col space-y-4">
-              {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Início' ? 'hero' : item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
+              {["Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
                   {item}
                 </a>)}
               <a href="#contato" className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
@@ -99,4 +97,5 @@ const Navbar = () => {
         </div>}
     </nav>;
 };
+
 export default Navbar;
