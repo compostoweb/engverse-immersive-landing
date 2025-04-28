@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
         
         <div className="pt-8 flex flex-col md:flex-row center-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-500 text-sm center-between">
             &copy; {new Date().getFullYear()} EngVerse. Todos os direitos reservados.
           </p>
         
