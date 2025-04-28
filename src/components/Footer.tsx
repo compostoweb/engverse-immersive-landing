@@ -23,7 +23,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4 text-white">Soluções</h3>
             <ul className="space-y-3">
               {["Modelagem e Simulação 3D", "Treinamento e Capacitação", "Suporte Remoto", "Visualização de Infraestrutura"].map(item => <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <a href="#serviços" className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}
                   </a>
                 </li>)}
@@ -34,7 +34,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4 text-white">Setores</h3>
             <ul className="space-y-3">
               {["Engenharia Civil", "Indústria de Base", "Mineração", "Geologia", "Infraestrutura"].map(item => <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
+                  <a href="#clientes" className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}
                   </a>
                 </li>)}
