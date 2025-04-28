@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
@@ -27,7 +28,7 @@ const Navbar = () => {
           
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-1">
-            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
+            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Início' ? 'hero' : item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
                 {item}
               </a>)}
             <a href="#contato" className="ml-4 px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors">
@@ -46,7 +47,7 @@ const Navbar = () => {
       <div className={cn("fixed inset-0 bg-[#0F172A]/95 backdrop-blur-lg md:hidden z-40 transition-transform duration-300 transform", isMobileMenuOpen ? "translate-x-0" : "translate-x-full")}>
         <div className="pt-24 pb-8 px-8">
           <div className="flex flex-col space-y-4">
-            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
+            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item === 'Início' ? 'hero' : item === 'Segmentos' ? 'clientes' : item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
                 {item}
               </a>)}
             <a href="#contato" className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
