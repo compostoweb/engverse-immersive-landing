@@ -1,5 +1,4 @@
 import React from 'react';
-
 const Footer = () => {
   return <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
@@ -16,11 +15,7 @@ const Footer = () => {
               que elevam a qualidade, segurança e eficiência dos projetos.
             </p>
             <div className="flex space-x-4">
-              {["linkedin", "twitter", "facebook", "instagram"].map(social => <a key={social} href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-engverse-blue/80 transition duration-300" aria-label={social}>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
-                  </svg>
-                </a>)}
+              {["linkedin", "twitter", "facebook", "instagram"].map(social => {})}
             </div>
           </div>
           
@@ -85,5 +80,4 @@ const Footer = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
