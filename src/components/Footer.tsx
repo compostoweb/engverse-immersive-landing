@@ -7,8 +7,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-white p-1 rounded-xl">
-                <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-14 w-auto object-contain" />
+              <div className="bg-white rounded-xl">
+                <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-16 w-auto object-contain" />
               </div>
               <p className="text-gray-400 max-w-[200px] leading-tight">
                 Transformando a Engenharia através da Realidade Virtual

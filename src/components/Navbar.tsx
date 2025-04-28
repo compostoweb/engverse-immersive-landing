@@ -22,8 +22,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <a href="#" className="flex items-center space-x-2">
-            <div className="bg-white p-1 rounded-xl">
-              <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-14 w-auto object-contain" />
+            <div className="bg-white rounded-xl">
+              <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-white text-sm max-w-[200px] leading-tight hidden md:block">
               Transformando a Engenharia através da Realidade Virtual
