@@ -32,7 +32,7 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="#contato" className="group px-6 py-3 bg-gradient-to-r from-engverse-orange to-engverse-blue rounded-full text-white font-medium flex items-center justify-center gap-2 transition-all hover:shadow-lg hover:shadow-engverse-blue/20">
+              <a href="#contato" className="group px-6 py-3 bg-gradient-to-r from-engverse-orange to-engverse-orange rounded-full text-white font-medium flex items-center justify-center gap-2 transition-all hover:shadow-lg hover:shadow-engverse-blue/20">
                 Agendar demonstração
                 <ChevronRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </a>
