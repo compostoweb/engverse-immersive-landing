@@ -88,7 +88,7 @@ const Navbar = () => {
                   </div>
                   <div>
                     <p className="text-white text-sm">Telefone</p>
-                    <a href="tel:+551199999999" className="text-gray-400 text-sm hover:text-white">+55 (31) 98365-4721</a>
+                    <a href="tel:+5531983654721" className="text-gray-400 text-sm hover:text-white">+55 (31) 98365-4721</a>
                   </div>
                 </div>
               </div>
