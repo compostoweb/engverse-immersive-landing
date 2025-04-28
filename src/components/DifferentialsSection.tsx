@@ -40,34 +40,36 @@ const DifferentialsSection = () => {
             <div 
               className="absolute inset-0 z-0"
               style={{
-                backgroundImage: 'url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158")',
+                backgroundImage: 'url("https://images.unsplash.com/photo-1460925895917-afdab827c52f")',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-engverse-blue/90 to-engverse-orange/70" />
+              <div className="absolute inset-0 bg-gradient-to-br from-engverse-blue/95 to-engverse-purple/90" />
             </div>
-            <div className="relative z-10 p-8 md:p-12 h-full">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">+12 anos</h3>
-              <p className="text-lg text-gray-200 mb-4">
-                de experiência combinada em engenharia e transformação digital
-              </p>
-              <div className="mt-auto pt-4 flex flex-wrap gap-3">
-                {["Engenharia Civil", "Infraestrutura", "Indústria", "Mineração", "Geologia"].map((item) => (
-                  <span 
-                    key={item} 
-                    className="inline-block bg-white/10 text-white text-sm px-3 py-1 rounded-full"
-                  >
-                    {item}
-                  </span>
-                ))}
+            <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-between">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">+12 anos</h3>
+              <div>
+                <p className="text-xl text-white mb-8 font-medium">
+                  de experiência combinada em engenharia e transformação digital
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {["Engenharia Civil", "Infraestrutura", "Indústria", "Mineração", "Geologia"].map((item) => (
+                    <span 
+                      key={item} 
+                      className="inline-block bg-white/20 backdrop-blur-sm text-white text-sm px-4 py-2 rounded-full hover:bg-white/30 transition-colors"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {differentials.map((item, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 card-shadow flex flex-col">
+              <div key={index} className="bg-white rounded-xl p-6 card-shadow hover:scale-105 transition-transform duration-300">
                 <div className={`${item.iconClass} w-12 h-12 rounded-lg mb-4 flex items-center justify-center`}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-engverse-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
