@@ -76,7 +76,7 @@ const ContactSection = () => {
     icon: <MapPin className="h-5 w-5 text-engverse-purple" />,
     title: "Endereço",
     value: "Belo Horizonte, MG - Brasil",
-    link: "https://goo.gl/maps/yourlocation"
+    
   }];
   return <section id="contato" className="py-24 bg-[#151E2C]">
       <div className="container mx-auto px-4">
