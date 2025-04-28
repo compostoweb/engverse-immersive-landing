@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -14,6 +15,7 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
   return <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", isScrolled ? "bg-[#0F172A]/90 backdrop-blur-lg shadow-lg" : "bg-transparent")}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
@@ -25,7 +27,7 @@ const Navbar = () => {
           
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-1">
-            {["Serviços", "Diferenciais", "Clientes", "Contato"].map(item => <a key={item} href={`#${item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
+            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
                 {item}
               </a>)}
             <a href="#contato" className="ml-4 px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors">
@@ -44,9 +46,12 @@ const Navbar = () => {
       <div className={cn("fixed inset-0 bg-[#0F172A]/95 backdrop-blur-lg md:hidden z-40 transition-transform duration-300 transform", isMobileMenuOpen ? "translate-x-0" : "translate-x-full")}>
         <div className="pt-24 pb-8 px-8">
           <div className="flex flex-col space-y-4">
-            {["Serviços", "Diferenciais", "Clientes", "Contato"].map(item => <a key={item} href={`#${item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
+            {["Início", "Serviços", "Diferenciais", "Segmentos"].map(item => <a key={item} href={`#${item.toLowerCase()}`} className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
                 {item}
               </a>)}
+            <a href="#contato" className="py-3 text-lg text-white border-b border-white/10" onClick={() => setIsMobileMenuOpen(false)}>
+              Contato
+            </a>
           </div>
           
           <div className="mt-8 pt-6 border-t border-white/10">
