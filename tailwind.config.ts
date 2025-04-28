@@ -61,7 +61,8 @@ export default {
           blue: "#0046BE",
           orange: "#FF6B2B",
           dark: "#1A1F2C",
-          light: "#F1F0FB"
+          light: "#F1F0FB",
+          purple: "#8B5CF6" // Adding the missing purple color
         }
       },
       borderRadius: {
