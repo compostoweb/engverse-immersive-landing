@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-
 const ContactSection = () => {
-  const { toast } = useToast();
+  const {
+    toast
+  } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,23 +12,26 @@ const ContactSection = () => {
     message: '',
     interest: 'Modelagem e Simulação 3D'
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    const {
+      name,
+      value
+    } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulando envio do formulário
     setTimeout(() => {
       toast({
         title: "Mensagem enviada!",
-        description: "Obrigado por entrar em contato. Retornaremos em breve.",
+        description: "Obrigado por entrar em contato. Retornaremos em breve."
       });
       setIsSubmitting(false);
       setFormData({
@@ -40,9 +43,7 @@ const ContactSection = () => {
       });
     }, 1500);
   };
-
-  return (
-    <section id="contato" className="section-padding">
+  return <section id="contato" className="section-padding">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -60,7 +61,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="text-lg font-semibold mb-1">Email</h3>
-                  <a href="mailto:contato@engverse.com.br" className="text-engverse-blue hover:underline">contato@engverse.com.br</a>
+                  <a href="mailto:contato@engverse.com.br" className="text-engverse-blue hover:underline">comercial@engverse.com.br</a>
                 </div>
               </div>
               
@@ -84,52 +85,22 @@ const ContactSection = () => {
               <div className="grid gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"
-                    required
-                  />
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent" required />
                 </div>
                 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email profissional</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"
-                    required
-                  />
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent" required />
                 </div>
                 
                 <div>
                   <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Empresa</label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"
-                    required
-                  />
+                  <input type="text" id="company" name="company" value={formData.company} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent" required />
                 </div>
                 
                 <div>
                   <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-1">Área de interesse</label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    value={formData.interest}
-                    onChange={handleChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"
-                  >
+                  <select id="interest" name="interest" value={formData.interest} onChange={handleChange} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent">
                     <option>Modelagem e Simulação 3D</option>
                     <option>Treinamento e Capacitação</option>
                     <option>Suporte Remoto & Assistência Técnica</option>
@@ -140,25 +111,11 @@ const ContactSection = () => {
                 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Mensagem</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"
-                  ></textarea>
+                  <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-engverse-blue focus:border-transparent"></textarea>
                 </div>
                 
                 <div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={cn(
-                      "w-full button-primary",
-                      isSubmitting && "opacity-70 cursor-not-allowed"
-                    )}
-                  >
+                  <button type="submit" disabled={isSubmitting} className={cn("w-full button-primary", isSubmitting && "opacity-70 cursor-not-allowed")}>
                     {isSubmitting ? "Enviando..." : "Enviar mensagem"}
                   </button>
                 </div>
@@ -167,8 +124,6 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;
