@@ -1,77 +1,47 @@
 import React from 'react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-[#0B111E] text-white py-16">
+  return <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-3 mb-6">
               <div className="bg-white p-3 rounded-xl">
-                <img 
-                  src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
-                  alt="EngVerse Logo" 
-                  className="h-8 object-contain"
-                />
+                <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-8 object-contain" />
               </div>
-              <span className="text-gray-400 text-sm">
-                Transformando a Engenharia através da Realidade Virtual
-              </span>
+              
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
               Transformando o setor de engenharia através de tecnologias imersivas 
               que elevam a qualidade, segurança e eficiência dos projetos.
             </p>
             <div className="flex space-x-4">
-              {["linkedin", "twitter", "facebook", "instagram"].map(social => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-engverse-blue/80 transition duration-300" 
-                  aria-label={social}
-                >
+              {["linkedin", "twitter", "facebook", "instagram"].map(social => <a key={social} href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-engverse-blue/80 transition duration-300" aria-label={social}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                   </svg>
-                </a>
-              ))}
+                </a>)}
             </div>
           </div>
           
           <div className="md:col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-white">Soluções</h3>
             <ul className="space-y-3">
-              {[
-                "Modelagem e Simulação 3D", 
-                "Treinamento e Capacitação", 
-                "Suporte Remoto", 
-                "Visualização de Infraestrutura"
-              ].map(item => (
-                <li key={item}>
+              {["Modelagem e Simulação 3D", "Treinamento e Capacitação", "Suporte Remoto", "Visualização de Infraestrutura"].map(item => <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
           
           <div className="md:col-span-1">
             <h3 className="text-lg font-semibold mb-4 text-white">Setores</h3>
             <ul className="space-y-3">
-              {[
-                "Engenharia Civil", 
-                "Indústria de Base", 
-                "Mineração", 
-                "Geologia",
-                "Infraestrutura"
-              ].map(item => (
-                <li key={item}>
+              {["Engenharia Civil", "Indústria de Base", "Mineração", "Geologia", "Infraestrutura"].map(item => <li key={item}>
                   <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">
                     {item}
                   </a>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
           
@@ -112,8 +82,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
