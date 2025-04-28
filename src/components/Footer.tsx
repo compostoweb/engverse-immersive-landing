@@ -1,8 +1,6 @@
 import React from 'react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-[#0B111E] text-white py-16">
+  return <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           <div className="md:col-span-2">
@@ -10,9 +8,7 @@ const Footer = () => {
               <div className="bg-white rounded-xl">
                 <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-16 w-auto object-contain" />
               </div>
-              <p className="text-gray-400 max-w-[200px] leading-tight">
-                Transformando a Engenharia através da Realidade Virtual
-              </p>
+              
             </div>
             
             <p className="text-gray-400 mb-6 max-w-md">
@@ -87,8 +83,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
