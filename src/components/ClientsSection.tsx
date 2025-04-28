@@ -87,7 +87,7 @@ const ClientsSection = () => {
                 Descubra como nossas tecnologias imersivas podem elevar o padrão 
                 dos seus projetos de engenharia.
               </p>
-              <a href="#contato" className="inline-block px-6 py-3 bg-gradient-to-r from-engverse-orange to-engverse-blue rounded-full text-white font-medium hover:shadow-lg hover:shadow-engverse-blue/20 transition-all">
+              <a href="#contato" className="inline-block px-6 py-3 bg-gradient-to-r from-engverse-orange to-engverse-orange rounded-full text-white font-medium hover:shadow-lg hover:shadow-engverse-blue/20 transition-all">
                 Fale com Especialistas
               </a>
             </div>
