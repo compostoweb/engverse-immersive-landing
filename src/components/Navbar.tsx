@@ -12,7 +12,7 @@ const Navbar = () => {
           <img 
             src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" 
             alt="EngVerse Logo" 
-            className="h-12 object-contain"
+            className="h-16 object-contain"
           />
         </a>
         
