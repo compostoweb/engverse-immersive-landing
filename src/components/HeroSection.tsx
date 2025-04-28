@@ -118,7 +118,7 @@ const HeroSection = () => {
           value: '+30',
           label: 'Projetos Entregues'
         }].map((stat, index) => <div key={index} className="text-center">
-              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-engverse-orange to-engverse-blue">{stat.value}</p>
+              <p className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-engverse-orange to-engverse-orange">{stat.value}</p>
               <p className="text-sm text-gray-400">{stat.label}</p>
             </div>)}
         </div>
