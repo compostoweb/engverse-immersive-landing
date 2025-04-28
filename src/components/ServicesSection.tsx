@@ -29,7 +29,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       
       <div className="mt-6 pt-4 border-t border-white/10">
         <div className="flex items-center justify-between">
-          <span className="text-xs text-gray-500">Solução Completa</span>
+          <!-- <span className="text-xs text-gray-500">01 Serviço</span> -->
           <a href="#contato" className="text-sm font-medium text-white flex items-center gap-1 group-hover:underline">
             Saiba mais
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
