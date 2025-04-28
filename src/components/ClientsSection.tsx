@@ -32,7 +32,7 @@ const ClientsSection = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
         </svg>
   }];
-  const benefits = ["+Precisão, Segurança e Produtividade nos seus projetos", "Equipe técnica multidisciplinar especializada", "Suporte para questões críticas", "Customização completa para seus fluxos de trabalho"];
+  const benefits = ["Precisão, Segurança e Produtividade nos seus projetos", "Equipe técnica multidisciplinar especializada", "Suporte para questões críticas", "Customização completa para seus fluxos de trabalho"];
   return <section id="clientes" className="py-24 bg-[#0F172A]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
