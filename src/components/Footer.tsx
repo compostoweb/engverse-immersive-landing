@@ -1,15 +1,20 @@
 import React from 'react';
+
 const Footer = () => {
-  return <footer className="bg-[#0B111E] text-white py-16">
+  return (
+    <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-5 gap-8 pb-12 border-b border-white/10">
           <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <div className="bg-white p-3 rounded-xl">
-                <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-8 object-contain" />
+            <div className="flex items-center space-x-4 mb-6">
+              <div className="bg-white p-4 rounded-xl">
+                <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-10 w-auto object-contain" />
               </div>
-              
+              <p className="text-gray-400 max-w-[200px] leading-tight">
+                Transformando a Engenharia através da Realidade Virtual
+              </p>
             </div>
+            
             <p className="text-gray-400 mb-6 max-w-md">
               Transformando o setor de engenharia através de tecnologias imersivas 
               que elevam a qualidade, segurança e eficiência dos projetos.
@@ -82,6 +87,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
