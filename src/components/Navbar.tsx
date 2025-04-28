@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -15,9 +13,8 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
   return <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", isScrolled ? "bg-[#0F172A]/90 backdrop-blur-lg shadow-lg" : "bg-transparent")}>
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 my-[15px]">
         <div className="flex justify-between items-center h-20">
           <a href="#" className="flex items-center space-x-2">
             <div className="bg-white rounded-xl px-[10px]">
@@ -85,5 +82,4 @@ const Navbar = () => {
       </div>
     </nav>;
 };
-
 export default Navbar;
