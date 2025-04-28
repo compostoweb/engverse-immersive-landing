@@ -70,8 +70,8 @@ const ContactSection = () => {
   }, {
     icon: <Phone className="h-5 w-5 text-engverse-blue" />,
     title: "Telefone",
-    value: "+55 (11) 9999-9999",
-    link: "tel:+551199999999"
+    value: "+55 (31) 98365-4721",
+    link: "tel:+5531983654721"
   }, {
     icon: <MapPin className="h-5 w-5 text-engverse-purple" />,
     title: "Endereço",
@@ -163,7 +163,7 @@ const ContactSection = () => {
                   <textarea id="message" name="message" value={formData.message} onChange={handleChange} rows={4} className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-2.5 text-white placeholder:text-gray-500 focus:border-engverse-blue/50 focus:outline-none focus:ring-1 focus:ring-engverse-blue/50" placeholder="Descreva sua necessidade..."></textarea>
                 </div>
                 
-                <button type="submit" disabled={isSubmitting} className={cn("flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-engverse-orange to-engverse-blue rounded-lg text-white font-medium hover:shadow-lg transition-all", isSubmitting && "opacity-70 cursor-not-allowed")}>
+                <button type="submit" disabled={isSubmitting} className={cn("flex items-center justify-center gap-2 w-full px-6 py-3 bg-gradient-to-r from-engverse-orange to-engverse-orange rounded-lg text-white font-medium hover:shadow-lg transition-all", isSubmitting && "opacity-70 cursor-not-allowed")}>
                   {isSubmitting ? "Enviando..." : "Enviar mensagem"}
                   <Send className="h-4 w-4" />
                 </button>
