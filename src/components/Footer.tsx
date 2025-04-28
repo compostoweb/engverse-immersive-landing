@@ -72,9 +72,9 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} EngVerse. Todos os direitos reservados.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="text-gray-500 text-sm hover:text-white">Termos de Uso</a>
+            
             <a href="#" className="text-gray-500 text-sm hover:text-white">Política de Privacidade</a>
-            <a href="#" className="text-gray-500 text-sm hover:text-white">Cookies</a>
+            
           </div>
         </div>
       </div>
