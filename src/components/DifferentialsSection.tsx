@@ -26,11 +26,11 @@ const DifferentialsSection = () => {
   ];
 
   return (
-    <section id="diferenciais" className="section-padding">
+    <section id="diferenciais" className="section-padding bg-gradient-to-br from-engverse-dark to-engverse-purple">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-engverse-blue">Nossos Diferenciais</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Nossos Diferenciais</h2>
+          <p className="text-lg text-gray-200 max-w-3xl mx-auto">
             O que nos destaca no mercado de tecnologia imersiva para engenharia
           </p>
         </div>
