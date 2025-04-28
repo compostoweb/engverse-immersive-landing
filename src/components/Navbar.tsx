@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           <a href="#" className="flex items-center space-x-2">
-            <div className="bg-white rounded-xl px-[5px]">
+            <div className="bg-white rounded-xl px-[10px]">
               <img src="/lovable-uploads/310b9c80-f68f-437a-aa08-3bc041e5d8f1.png" alt="EngVerse Logo" className="h-16 w-auto object-contain" />
             </div>
           </a>
