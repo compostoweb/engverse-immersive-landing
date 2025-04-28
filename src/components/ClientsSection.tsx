@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const ClientsSection = () => {
@@ -54,8 +53,19 @@ const ClientsSection = () => {
   ];
 
   return (
-    <section id="clientes" className="section-padding bg-engverse-dark text-white">
-      <div className="container mx-auto px-4">
+    <section id="clientes" className="section-padding relative">
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1439337153520-7082a56a81f4")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-engverse-dark/98 to-engverse-dark/95" />
+      </div>
+      
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Quem Atendemos</h2>
           <p className="text-lg text-gray-300 max-w-3xl mx-auto">

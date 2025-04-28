@@ -1,10 +1,21 @@
-
 import React from 'react';
 import { cn } from "@/lib/utils";
 
 const HeroSection = () => {
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-32 hero-gradient overflow-hidden">
+    <section className="pt-32 pb-20 md:pt-40 md:pb-32 hero-gradient overflow-hidden relative">
+      {/* Background image with overlay */}
+      <div 
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url("https://images.unsplash.com/photo-1605810230434-7631ac76ec81")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-engverse-dark/95 to-engverse-dark/80" />
+      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="text-center md:text-left">

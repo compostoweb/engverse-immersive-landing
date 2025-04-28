@@ -36,8 +36,18 @@ const DifferentialsSection = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="ar-overlay rounded-xl overflow-hidden">
-            <div className="bg-gradient-to-br from-engverse-dark to-engverse-purple/70 p-8 md:p-12 h-full">
+          <div className="ar-overlay rounded-xl overflow-hidden relative">
+            <div 
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundImage: 'url("https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7")',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-engverse-dark/90 to-engverse-purple/70" />
+            </div>
+            <div className="relative z-10 p-8 md:p-12 h-full">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">+12 anos</h3>
               <p className="text-lg text-gray-200 mb-4">
                 de experiência combinada em engenharia e transformação digital
