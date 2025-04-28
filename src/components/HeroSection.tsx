@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from "@/lib/utils";
 const HeroSection = () => {
@@ -12,11 +13,14 @@ const HeroSection = () => {
     </div>
 
     <div className="container mx-auto px-4 relative z-10">
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div className="text-center md:text-left">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-            Transformando a Engenharia com Tecnologias Imersivas
-          </h1>
+      <div className="grid md:grid-cols-2 gap-12 items-center relative">
+        <div className="text-center md:text-left md:pr-8">
+          <div className="relative">
+            <div className="absolute -left-8 -top-8 w-24 h-24 bg-engverse-purple/10 rounded-full blur-2xl"></div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Transformando a Engenharia com Tecnologias Imersivas
+            </h1>
+          </div>
           <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-lg mx-auto md:mx-0">Soluções de Realidade Aumentada, Virtual e Mista que elevam segurança, produtividade e precisão em projetos de engenharia.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a href="#contato" className="button-primary">
