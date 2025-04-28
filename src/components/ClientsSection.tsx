@@ -75,7 +75,7 @@ const ClientsSection = () => {
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-engverse-blue/20 to-engverse-purple/20 rounded-2xl p-8 border border-white/10">
+          <div className="bg-gradient-to-br from-engverse-orange/20 to-engverse-purple/20 rounded-2xl p-8 border border-white/10">
             <div className="text-center">
               <div className="w-16 h-16 mx-auto bg-white/10 rounded-2xl flex items-center justify-center mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
