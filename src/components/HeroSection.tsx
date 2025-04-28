@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from "@/lib/utils";
-
 const HeroSection = () => {
   return <section className="pt-32 pb-20 md:pt-40 md:pb-32 hero-gradient overflow-hidden relative">
     {/* Background image with overlay */}
@@ -35,11 +34,7 @@ const HeroSection = () => {
               <div className="grid grid-cols-2 gap-2">
                 {[1, 2].map(index => <div key={index} className="aspect-video bg-gradient-to-br from-engverse-blue/30 to-engverse-purple/30 rounded-md flex items-center justify-center">
                   <div className="w-full h-full flex items-center justify-center">
-                    <img 
-                      src="https://images.unsplash.com/photo-1617839906018-cdd2bf1f9307"
-                      alt="3D VR Headset"
-                      className="w-16 h-16 object-cover rounded-md"
-                    />
+                    <img alt="3D VR Headset" src="/lovable-uploads/372b6de2-e2e2-4bc2-b5a1-3056c3b00f8b.jpg" className="w-16 h-16 rounded-md object-cover" />
                   </div>
                 </div>)}
               </div>
@@ -72,5 +67,4 @@ const HeroSection = () => {
     <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-engverse-purple/5 rounded-full blur-2xl"></div>
   </section>;
 };
-
 export default HeroSection;
