@@ -22,7 +22,7 @@ const ContactOption = ({
       </a>;
   }
   return <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 text-center">
-      <div className="w-12 h-12 mx-auto bg-gradient-to-br from-engverse-blue/20 to-engverse-purple/20 rounded flex items-center justify-center mb-4">
+      <div className="w-12 h-12 mx-auto bg-gradient-to-br from-engverse-blue/20 to-engverse-purple/20 rounded-xl flex items-center justify-center mb-4">
         {icon}
       </div>
       <h3 className="text-lg font-medium text-white mb-2">{title}</h3>
