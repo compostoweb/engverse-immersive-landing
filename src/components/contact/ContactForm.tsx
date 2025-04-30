@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -89,10 +88,37 @@ const ContactForm = () => {
     }
   };
 
+  const sendLeadEmail = async (data: FormValues) => {
+    try {
+      const { error } = await supabase.functions.invoke('send-lead-email', {
+        body: {
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          phone: data.phone,
+          interest: data.interest,
+          message: data.message || "",
+        }
+      });
+      
+      if (error) {
+        console.error("Error sending email:", error);
+        return false;
+      }
+      
+      return true;
+    } catch (error) {
+      console.error("Exception while sending email:", error);
+      return false;
+    }
+  };
+
   const onSubmit = async (data: FormValues) => {
-    const success = await saveLeadToDatabase(data);
+    const dbSuccess = await saveLeadToDatabase(data);
     
-    if (success) {
+    const emailSuccess = await sendLeadEmail(data);
+    
+    if (dbSuccess) {
       toast({
         title: "Mensagem enviada!",
         description: "Obrigado por entrar em contato. Retornaremos em breve."
@@ -104,6 +130,10 @@ const ContactForm = () => {
         description: "Houve um problema ao enviar sua mensagem. Tente novamente mais tarde.",
         variant: "destructive"
       });
+    }
+
+    if (!emailSuccess) {
+      console.error("Falha ao enviar email, mas dados foram salvos no banco.");
     }
   };
 
