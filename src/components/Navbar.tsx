@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -15,7 +13,6 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -26,7 +23,6 @@ const Navbar = () => {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
-
   return <nav className={cn("fixed top-0 left-0 right-0 z-50 transition-all duration-300", isScrolled ? "bg-[#0F172A]/90 backdrop-blur-lg shadow-lg" : "bg-transparent")}>
       <div className="container mx-auto px-4 my-[15px]">
         <div className="flex justify-between items-center h-20">
@@ -40,7 +36,7 @@ const Navbar = () => {
             {["Serviços", "Diferenciais", "Setores"].map(item => <a key={item} href={`#${item === 'Setores' ? 'clientes' : item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
                 {item}
               </a>)}
-            <a href="#contato" className="ml-4 px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors">
+            <a href="#contato" className="ml-4 px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-orange/20 transition-colors">
               Contato
             </a>
           </div>
@@ -97,5 +93,4 @@ const Navbar = () => {
         </div>}
     </nav>;
 };
-
 export default Navbar;
