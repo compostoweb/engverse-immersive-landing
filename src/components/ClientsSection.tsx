@@ -48,7 +48,7 @@ const ClientsSection = () => {
         
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mb-20">
           {clientTypes.map((client, index) => <div key={index} className="bg-white/5 backdrop-blur-sm rounded-xl border border-white/10 p-5 hover:border-white/20 hover:bg-white/10 transition-all text-center cursor-pointer">
-              <div className="w-12 h-12 mx-auto bg-gradient-to-br from-engverse-blue/20 to-engverse-purple/20 rounded-xl flex items-center justify-center mb-4">
+              <div className="w-12 h-12 mx-auto bg-gradient-to-br from-engverse-orange/20 to-engverse-purple/20 rounded-xl flex items-center justify-center mb-4">
                 <div className="text-white">
                   {client.icon}
                 </div>
