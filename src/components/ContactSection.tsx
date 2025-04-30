@@ -17,6 +17,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres" }),
@@ -59,26 +60,35 @@ const ContactSection = () => {
     return value;
   };
 
-  const sendEmail = async (data: z.infer<typeof formSchema>) => {
+  const saveLeadToDatabase = async (data: z.infer<typeof formSchema>) => {
     try {
-      // In a real implementation, you would use an email service API here
-      // This is a simulation of sending the email
-      console.log("Sending email to: comercial@engverse.com.br");
-      console.log("Form data:", data);
+      const { error } = await supabase
+        .from('leads')
+        .insert([
+          { 
+            name: data.name,
+            email: data.email,
+            company: data.company,
+            phone: data.phone,
+            interest: data.interest,
+            message: data.message || null
+          }
+        ]);
       
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      if (error) {
+        console.error("Error saving lead:", error);
+        return false;
+      }
       
-      // Email sent successfully
       return true;
     } catch (error) {
-      console.error("Error sending email:", error);
+      console.error("Exception while saving lead:", error);
       return false;
     }
   };
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    const success = await sendEmail(data);
+    const success = await saveLeadToDatabase(data);
     
     if (success) {
       toast({
@@ -312,7 +322,7 @@ const ContactSection = () => {
                     )}
                   >
                     {isSubmitting ? "Enviando..." : "Enviar mensagem"}
-                    <Send className="h-4 w-4" />
+                    <Send className="h-4 w-4 ml-2" />
                   </Button>
                 </form>
               </Form>
