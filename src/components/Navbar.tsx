@@ -36,7 +36,7 @@ const Navbar = () => {
             {["Serviços", "Diferenciais", "Setores"].map(item => <a key={item} href={`#${item === 'Setores' ? 'clientes' : item.toLowerCase()}`} className="px-4 py-2 text-gray-300 hover:text-white transition-colors">
                 {item}
               </a>)}
-            <a href="#contato" className="ml-4 px-5 py-2 bg-orange/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors">
+            <a href="#contato" className="ml-4 px-5 py-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white hover:bg-white/20 transition-colors">
               Contato
             </a>
           </div>
