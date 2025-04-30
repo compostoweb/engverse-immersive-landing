@@ -1,4 +1,6 @@
+
 import React from 'react';
+
 const Footer = () => {
   return <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
@@ -15,7 +17,25 @@ const Footer = () => {
               que elevam a qualidade, segurança e eficiência dos projetos.
             </p>
             <div className="flex space-x-4">
-              {["linkedin", "twitter", "facebook", "instagram"].map(social => {})}
+              {["linkedin", "twitter", "facebook", "instagram"].map(social => (
+                <a 
+                  key={social}
+                  href={`https://${social}.com`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <span className="sr-only">{social}</span>
+                  <svg 
+                    className="h-5 w-5" 
+                    fill="currentColor" 
+                    viewBox="0 0 24 24" 
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z" />
+                  </svg>
+                </a>
+              ))}
             </div>
           </div>
           
@@ -76,4 +96,5 @@ const Footer = () => {
       </div>
     </footer>;
 };
+
 export default Footer;
