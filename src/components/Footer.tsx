@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Linkedin } from 'lucide-react';
-
 const Footer = () => {
   return <footer className="bg-[#0B111E] text-white py-16">
       <div className="container mx-auto px-4">
@@ -18,14 +16,9 @@ const Footer = () => {
               que elevam a qualidade, segurança e eficiência dos projetos.
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://www.linkedin.com/company/engverse" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
-              >
+              <a href="https://www.linkedin.com/company/engverse" target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
                 <span className="sr-only">LinkedIn</span>
-                <Linkedin className="h-5 w-5 text-white" />
+                <Linkedin className="h-5 w-5 text-white/70" />
               </a>
             </div>
           </div>
@@ -87,5 +80,4 @@ const Footer = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
