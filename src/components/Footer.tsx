@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return <footer className="bg-[#0B111E] text-white py-16">
@@ -17,25 +18,15 @@ const Footer = () => {
               que elevam a qualidade, segurança e eficiência dos projetos.
             </p>
             <div className="flex space-x-4">
-              {["linkedin", "twitter", "facebook", "instagram"].map(social => (
-                <a 
-                  key={social}
-                  href={`https://${social}.com`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  <span className="sr-only">{social}</span>
-                  <svg 
-                    className="h-5 w-5" 
-                    fill="currentColor" 
-                    viewBox="0 0 24 24" 
-                    aria-hidden="true"
-                  >
-                    <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10z" />
-                  </svg>
-                </a>
-              ))}
+              <a 
+                href="https://www.linkedin.com/company/engverse" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+              >
+                <span className="sr-only">LinkedIn</span>
+                <Linkedin className="h-5 w-5 text-white" />
+              </a>
             </div>
           </div>
           
