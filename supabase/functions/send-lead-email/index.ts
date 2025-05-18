@@ -31,10 +31,10 @@ const handler = async (req: Request): Promise<Response> => {
     try {
       await client.connect({
         hostname: "smtp.hostinger.com",
-        port: 465,
+        port: 587,
         username: Deno.env.get('SMTP_USERNAME'),
         password: Deno.env.get('SMTP_PASSWORD'),
-        ssl: true,
+        tls: true,
       });
       
       // Format message content
