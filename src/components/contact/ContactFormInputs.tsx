@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { UseFormReturn } from "react-hook-form";
-import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -18,17 +17,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
-const formSchema = z.object({
-  name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres" }),
-  email: z.string().email({ message: "Email inválido" }),
-  company: z.string().min(2, { message: "Empresa deve ter pelo menos 2 caracteres" }),
-  phone: z.string().min(14, { message: "Telefone inválido" }),
-  interest: z.string(),
-  message: z.string().optional(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import { FormValues } from './ContactFormService';
 
 interface ContactFormInputsProps {
   form: UseFormReturn<FormValues>;
