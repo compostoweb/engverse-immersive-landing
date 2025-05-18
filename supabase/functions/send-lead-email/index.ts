@@ -32,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
     try {
       await client.connect({
         hostname: "smtp.hostinger.com",
-        port: 465,
+        port: 587,
         username: "comercial@engverse.com.br",
         password: "EngVerse2025#",
         tls: true,
