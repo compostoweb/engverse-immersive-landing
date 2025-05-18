@@ -58,19 +58,19 @@ const handler = async (req: Request): Promise<Response> => {
       
       await client.close();
       
-      console.log("Email sent successfully to comercial@engverse.com.br");
+      console.log("Email enviado com sucesso para comercial@engverse.com.br");
       
       return new Response(JSON.stringify({ success: true }), {
         headers: { "Content-Type": "application/json", ...corsHeaders },
         status: 200,
       });
     } catch (smtpError) {
-      console.error("SMTP error:", smtpError);
-      throw new Error(`SMTP error: ${smtpError.message}`);
+      console.error("Erro de SMTP:", smtpError);
+      throw new Error(`Erro de SMTP: ${smtpError.message}`);
     }
     
   } catch (error) {
-    console.error("Email sending error:", error);
+    console.error("Erro ao enviar e-mail:", error);
     return new Response(JSON.stringify({ error: error.message }), {
       headers: { "Content-Type": "application/json", ...corsHeaders },
       status: 500,
