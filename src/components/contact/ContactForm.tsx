@@ -122,9 +122,14 @@ const ContactForm = () => {
   };
 
   const onSubmit = async (data: FormValues) => {
+    // First save to database
     const dbSuccess = await saveLeadToDatabase(data);
     
-    const emailSuccess = await sendLeadEmail(data);
+    // Then try to send email
+    let emailSuccess = false;
+    if (dbSuccess) {
+      emailSuccess = await sendLeadEmail(data);
+    }
     
     if (dbSuccess) {
       toast({
@@ -140,7 +145,7 @@ const ContactForm = () => {
       });
     }
 
-    if (!emailSuccess) {
+    if (!emailSuccess && dbSuccess) {
       console.error("Falha ao enviar email, mas dados foram salvos no banco.");
     }
   };

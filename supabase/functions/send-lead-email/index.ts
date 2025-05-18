@@ -29,37 +29,45 @@ const handler = async (req: Request): Promise<Response> => {
     // Configure SMTP client
     const client = new SmtpClient();
     
-    await client.connectTLS({
-      hostname: "smtp.hostinger.com",
-      port: 465,
-      username: "comercial@engverse.com.br",
-      password: Deno.env.get("SMTP_PASSWORD") || "EngVerse2025#",
-    });
-
-    // Format message content
-    const formattedMessage = `
-      Nome: ${name}
-      Email: ${email}
-      Empresa: ${company}
-      Telefone: ${phone}
-      Interesse: ${interest}
-      Mensagem: ${message || "Não informada"}
-    `;
-    
-    // Send email
-    await client.send({
-      from: "comercial@engverse.com.br",
-      to: "comercial@engverse.com.br",
-      subject: `Novo Lead - ${company}`,
-      content: formattedMessage,
-    });
-    
-    await client.close();
-    
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-      status: 200,
-    });
+    try {
+      await client.connect({
+        hostname: "smtp.hostinger.com",
+        port: 465,
+        username: "comercial@engverse.com.br",
+        password: "EngVerse2025#",
+        tls: true,
+      });
+      
+      // Format message content
+      const formattedMessage = `
+        Nome: ${name}
+        Email: ${email}
+        Empresa: ${company}
+        Telefone: ${phone}
+        Interesse: ${interest}
+        Mensagem: ${message || "Não informada"}
+      `;
+      
+      // Send email
+      await client.send({
+        from: "comercial@engverse.com.br",
+        to: "comercial@engverse.com.br",
+        subject: `Novo Lead - ${company}`,
+        content: formattedMessage,
+      });
+      
+      await client.close();
+      
+      console.log("Email sent successfully to comercial@engverse.com.br");
+      
+      return new Response(JSON.stringify({ success: true }), {
+        headers: { "Content-Type": "application/json", ...corsHeaders },
+        status: 200,
+      });
+    } catch (smtpError) {
+      console.error("SMTP error:", smtpError);
+      throw new Error(`SMTP error: ${smtpError.message}`);
+    }
     
   } catch (error) {
     console.error("Email sending error:", error);
