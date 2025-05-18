@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -54,31 +53,46 @@ const ContactForm = () => {
   };
 
   const onSubmit = async (data: FormValues) => {
-    // Primeiro salva no banco de dados
-    const dbSuccess = await saveLeadToDatabase(data);
+    console.log("Formulário enviado:", data);
     
-    // Então tenta enviar o e-mail
-    let emailSuccess = false;
-    if (dbSuccess) {
-      emailSuccess = await sendLeadEmail(data);
-    }
-    
-    if (dbSuccess) {
+    try {
+      // Primeiro salva no banco de dados
+      const { success, error } = await saveLeadToDatabase(data);
+      
+      // Se salvar falhar, mostra um erro
+      if (!success) {
+        console.error("Erro ao salvar no banco de dados:", error);
+        toast({
+          title: "Erro ao enviar mensagem",
+          description: "Houve um problema ao enviar sua mensagem. Tente novamente mais tarde.",
+          variant: "destructive"
+        });
+        return;
+      }
+      
+      // Então tenta enviar o e-mail
+      let emailSuccess = false;
+      if (success) {
+        emailSuccess = await sendLeadEmail(data);
+        
+        if (!emailSuccess) {
+          console.warn("Falha ao enviar email, mas dados foram salvos no banco.");
+        }
+      }
+      
+      // Se o banco de dados foi salvo com sucesso, mostra mensagem de sucesso
       toast({
         title: "Mensagem enviada!",
         description: "Obrigado por entrar em contato. Retornaremos em breve."
       });
       form.reset();
-    } else {
+    } catch (err) {
+      console.error("Erro ao processar envio:", err);
       toast({
         title: "Erro ao enviar mensagem",
         description: "Houve um problema ao enviar sua mensagem. Tente novamente mais tarde.",
         variant: "destructive"
       });
-    }
-
-    if (!emailSuccess && dbSuccess) {
-      console.error("Falha ao enviar email, mas dados foram salvos no banco.");
     }
   };
 

@@ -12,7 +12,8 @@ export interface FormValues {
 
 export const saveLeadToDatabase = async (data: FormValues) => {
   try {
-    const { error } = await supabase
+    console.log("Tentando salvar lead:", data);
+    const { error, data: insertedData } = await supabase
       .from('leads')
       .insert([
         { 
@@ -23,17 +24,19 @@ export const saveLeadToDatabase = async (data: FormValues) => {
           interest: data.interest,
           message: data.message || null
         }
-      ]);
+      ])
+      .select();
     
     if (error) {
       console.error("Erro ao salvar lead:", error);
-      return false;
+      return { success: false, error };
     }
     
-    return true;
+    console.log("Lead salvo com sucesso:", insertedData);
+    return { success: true, data: insertedData };
   } catch (error) {
     console.error("Exceção ao salvar lead:", error);
-    return false;
+    return { success: false, error };
   }
 };
 
