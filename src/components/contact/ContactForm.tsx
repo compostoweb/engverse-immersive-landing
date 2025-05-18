@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
@@ -13,6 +14,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -246,18 +254,23 @@ const ContactForm = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel className="text-gray-300">Área de interesse</FormLabel>
-                    <FormControl>
-                      <select 
-                        className="w-full bg-white/10 border border-white/10 rounded-lg px-4 py-2.5 text-white focus:border-engverse-blue/50 focus:outline-none focus:ring-1 focus:ring-engverse-blue/50"
-                        {...field}
-                      >
-                        <option value="Modelagem e Simulação 3D">Modelagem e Simulação 3D</option>
-                        <option value="Treinamento e Capacitação">Treinamento e Capacitação</option>
-                        <option value="Suporte Remoto & Assistência">Suporte Remoto & Assistência</option>
-                        <option value="Visualização de Infraestrutura">Visualização de Infraestrutura</option>
-                        <option value="Outras soluções">Outras soluções</option>
-                      </select>
-                    </FormControl>
+                    <Select 
+                      onValueChange={field.onChange} 
+                      defaultValue={field.value}
+                    >
+                      <FormControl>
+                        <SelectTrigger className="bg-white/10 border-white/10 text-white focus:border-engverse-blue/50">
+                          <SelectValue placeholder="Selecione uma área de interesse" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent className="bg-[#1F2A3C] text-white border-white/10">
+                        <SelectItem value="Modelagem e Simulação 3D" className="focus:bg-white/10 focus:text-white">Modelagem e Simulação 3D</SelectItem>
+                        <SelectItem value="Treinamento e Capacitação" className="focus:bg-white/10 focus:text-white">Treinamento e Capacitação</SelectItem>
+                        <SelectItem value="Suporte Remoto & Assistência" className="focus:bg-white/10 focus:text-white">Suporte Remoto & Assistência</SelectItem>
+                        <SelectItem value="Visualização de Infraestrutura" className="focus:bg-white/10 focus:text-white">Visualização de Infraestrutura</SelectItem>
+                        <SelectItem value="Outras soluções" className="focus:bg-white/10 focus:text-white">Outras soluções</SelectItem>
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}
