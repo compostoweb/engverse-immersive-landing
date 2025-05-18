@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
@@ -32,10 +31,10 @@ const handler = async (req: Request): Promise<Response> => {
     try {
       await client.connect({
         hostname: "smtp.hostinger.com",
-        port: 587,
-        username: "comercial@engverse.com.br",
-        password: "EngVerse2025#",
-        tls: true,
+        port: 465,
+        username: Deno.env.get('SMTP_USERNAME'),
+        password: Deno.env.get('SMTP_PASSWORD'),
+        ssl: true,
       });
       
       // Format message content
