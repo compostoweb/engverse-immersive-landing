@@ -49,7 +49,7 @@ const handler = async (req: Request): Promise<Response> => {
     
     // Using Resend API
     const emailData = {
-      from: "Engverse <no-reply@engverse.com.br>",
+      from: "Engverse Site <no-reply@engverse.com.br>",
       to: ["comercial@engverse.com.br"],
       subject: `Novo Lead - ${company}`,
       text: formattedMessage,
