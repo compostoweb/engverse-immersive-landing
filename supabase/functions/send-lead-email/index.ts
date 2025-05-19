@@ -38,45 +38,42 @@ const handler = async (req: Request): Promise<Response> => {
       Mensagem: ${message || "Não informada"}
     `;
     
-    // Use fetch API directly to send email via custom SMTP or other service
-    const apiKey = Deno.env.get('SMTP_PASSWORD');
-    const username = Deno.env.get('SMTP_USERNAME');
+    // Use Resend API key
+    const resendApiKey = Deno.env.get('RESEND_API_KEY');
     
-    if (!apiKey || !username) {
-      throw new Error("Credenciais de email não configuradas");
+    if (!resendApiKey) {
+      throw new Error("Credenciais da API Resend não configuradas");
     }
 
-    // Directly use the API to send the email (example using mailgun or similar API)
-    // This avoids SMTP library compatibility issues
+    console.log("Enviando e-mail via Resend API...");
+    
+    // Using Resend API
     const emailData = {
-      from: "comercial@engverse.com.br",
-      to: "comercial@engverse.com.br",
+      from: "Engverse <onboarding@resend.dev>",
+      to: ["comercial@engverse.com.br"],
       subject: `Novo Lead - ${company}`,
       text: formattedMessage,
     };
     
-    console.log("Enviando e-mail via API HTTP...");
-    
-    // Using a basic HTTP API call instead of SMTP
-    const response = await fetch('https://api.mailgun.net/v3/engverse.com.br/messages', {
+    const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Basic ${btoa(`api:${apiKey}`)}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': `Bearer ${resendApiKey}`,
+        'Content-Type': 'application/json',
       },
-      body: new URLSearchParams(emailData).toString()
+      body: JSON.stringify(emailData)
     });
     
+    const responseData = await response.json();
+    
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("Erro na API de e-mail:", response.status, errorText);
-      throw new Error(`Erro ao enviar e-mail: ${response.status} - ${errorText}`);
+      console.error("Erro na API de e-mail:", response.status, responseData);
+      throw new Error(`Erro ao enviar e-mail: ${response.status} - ${JSON.stringify(responseData)}`);
     }
     
-    const result = await response.json();
-    console.log("Email enviado com sucesso:", result);
+    console.log("Email enviado com sucesso:", responseData);
     
-    return new Response(JSON.stringify({ success: true, message: "E-mail enviado com sucesso" }), {
+    return new Response(JSON.stringify({ success: true, message: "E-mail enviado com sucesso", data: responseData }), {
       headers: { "Content-Type": "application/json", ...corsHeaders },
       status: 200,
     });
