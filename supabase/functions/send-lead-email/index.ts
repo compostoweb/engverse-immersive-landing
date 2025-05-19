@@ -1,6 +1,5 @@
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { SmtpClient } from "https://deno.land/x/smtp@v0.7.0/mod.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -29,71 +28,58 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("Dados recebidos:", { name, email, company, phone, interest });
     
-    // Verificar credenciais SMTP
-    const smtpUsername = Deno.env.get('SMTP_USERNAME');
-    const smtpPassword = Deno.env.get('SMTP_PASSWORD');
+    // Format message content
+    const formattedMessage = `
+      Nome: ${name}
+      Email: ${email}
+      Empresa: ${company}
+      Telefone: ${phone}
+      Interesse: ${interest}
+      Mensagem: ${message || "Não informada"}
+    `;
     
-    if (!smtpUsername || !smtpPassword) {
-      throw new Error("Credenciais SMTP não configuradas");
+    // Use fetch API directly to send email via custom SMTP or other service
+    const apiKey = Deno.env.get('SMTP_PASSWORD');
+    const username = Deno.env.get('SMTP_USERNAME');
+    
+    if (!apiKey || !username) {
+      throw new Error("Credenciais de email não configuradas");
+    }
+
+    // Directly use the API to send the email (example using mailgun or similar API)
+    // This avoids SMTP library compatibility issues
+    const emailData = {
+      from: "comercial@engverse.com.br",
+      to: "comercial@engverse.com.br",
+      subject: `Novo Lead - ${company}`,
+      text: formattedMessage,
+    };
+    
+    console.log("Enviando e-mail via API HTTP...");
+    
+    // Using a basic HTTP API call instead of SMTP
+    const response = await fetch('https://api.mailgun.net/v3/engverse.com.br/messages', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Basic ${btoa(`api:${apiKey}`)}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(emailData).toString()
+    });
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Erro na API de e-mail:", response.status, errorText);
+      throw new Error(`Erro ao enviar e-mail: ${response.status} - ${errorText}`);
     }
     
-    // Configure SMTP client
-    const client = new SmtpClient();
+    const result = await response.json();
+    console.log("Email enviado com sucesso:", result);
     
-    try {
-      console.log("Conectando ao servidor SMTP...");
-      await client.connect({
-        hostname: "smtp.hostinger.com",
-        port: 587,
-        username: smtpUsername,
-        password: smtpPassword,
-        tls: true,
-      });
-      
-      console.log("Conexão SMTP estabelecida");
-      
-      // Format message content
-      const formattedMessage = `
-        Nome: ${name}
-        Email: ${email}
-        Empresa: ${company}
-        Telefone: ${phone}
-        Interesse: ${interest}
-        Mensagem: ${message || "Não informada"}
-      `;
-      
-      console.log("Enviando e-mail...");
-      
-      // Send email
-      const sendResult = await client.send({
-        from: "comercial@engverse.com.br",
-        to: "comercial@engverse.com.br",
-        subject: `Novo Lead - ${company}`,
-        content: formattedMessage,
-      });
-      
-      console.log("Resultado do envio:", sendResult);
-      
-      await client.close();
-      
-      console.log("Email enviado com sucesso para comercial@engverse.com.br");
-      
-      return new Response(JSON.stringify({ success: true }), {
-        headers: { "Content-Type": "application/json", ...corsHeaders },
-        status: 200,
-      });
-    } catch (smtpError) {
-      console.error("Erro de SMTP:", smtpError);
-      
-      // Tentar fechar o cliente SMTP em caso de erro
-      try {
-        await client.close();
-      } catch (closeError) {
-        console.error("Erro ao fechar cliente SMTP:", closeError);
-      }
-      
-      throw new Error(`Erro de SMTP: ${smtpError.message}`);
-    }
+    return new Response(JSON.stringify({ success: true, message: "E-mail enviado com sucesso" }), {
+      headers: { "Content-Type": "application/json", ...corsHeaders },
+      status: 200,
+    });
     
   } catch (error) {
     console.error("Erro ao enviar e-mail:", error);
