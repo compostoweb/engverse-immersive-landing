@@ -51,7 +51,7 @@ const handler = async (req: Request): Promise<Response> => {
     const emailData = {
       from: "Engverse Site <no-reply@engverse.com.br>",
       to: ["comercial@engverse.com.br"],
-      reply_to: ${email},
+      reply_to: ["${email}"],
       subject: `Novo Lead - ${company}`,
       text: formattedMessage,
     };
