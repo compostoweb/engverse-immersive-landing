@@ -1,3 +1,4 @@
+
 import { supabase } from "@/integrations/supabase/client";
 
 export interface FormValues {
@@ -41,7 +42,8 @@ export const saveLeadToDatabase = async (data: FormValues) => {
 
 export const sendLeadEmail = async (data: FormValues) => {
   try {
-    const { error } = await supabase.functions.invoke('send-lead-email', {
+    console.log("Enviando e-mail para:", data.email);
+    const { data: response, error } = await supabase.functions.invoke('send-lead-email', {
       body: {
         name: data.name,
         email: data.email,
@@ -53,13 +55,14 @@ export const sendLeadEmail = async (data: FormValues) => {
     });
     
     if (error) {
-      console.error("Erro ao enviar e-mail:", error);
-      return false;
+      console.error("Erro ao chamar função de envio de e-mail:", error);
+      return { success: false, error };
     }
     
-    return true;
+    console.log("Resposta da função de e-mail:", response);
+    return { success: true, data: response };
   } catch (error) {
     console.error("Exceção ao enviar e-mail:", error);
-    return false;
+    return { success: false, error };
   }
 };

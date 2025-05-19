@@ -57,34 +57,39 @@ const ContactForm = () => {
     
     try {
       // Primeiro salva no banco de dados
-      const { success, error } = await saveLeadToDatabase(data);
+      const dbResult = await saveLeadToDatabase(data);
       
       // Se salvar falhar, mostra um erro
-      if (!success) {
-        console.error("Erro ao salvar no banco de dados:", error);
+      if (!dbResult.success) {
+        console.error("Erro ao salvar no banco de dados:", dbResult.error);
         toast({
           title: "Erro ao enviar mensagem",
-          description: "Houve um problema ao enviar sua mensagem. Tente novamente mais tarde.",
+          description: "Houve um problema ao salvar seus dados. Por favor, tente novamente mais tarde.",
           variant: "destructive"
         });
         return;
       }
       
+      console.log("Dados salvos, enviando e-mail...");
+      
       // Então tenta enviar o e-mail
-      let emailSuccess = false;
-      if (success) {
-        emailSuccess = await sendLeadEmail(data);
-        
-        if (!emailSuccess) {
-          console.warn("Falha ao enviar email, mas dados foram salvos no banco.");
-        }
+      const emailResult = await sendLeadEmail(data);
+      
+      if (!emailResult.success) {
+        console.warn("Falha ao enviar email, mas dados foram salvos no banco:", emailResult.error);
+        toast({
+          title: "Mensagem recebida!",
+          description: "Seus dados foram salvos, mas pode haver um atraso na resposta por e-mail. Entraremos em contato em breve.",
+          variant: "default"
+        });
+      } else {
+        console.log("E-mail enviado com sucesso:", emailResult.data);
+        toast({
+          title: "Mensagem enviada!",
+          description: "Obrigado por entrar em contato. Retornaremos em breve."
+        });
       }
       
-      // Se o banco de dados foi salvo com sucesso, mostra mensagem de sucesso
-      toast({
-        title: "Mensagem enviada!",
-        description: "Obrigado por entrar em contato. Retornaremos em breve."
-      });
       form.reset();
     } catch (err) {
       console.error("Erro ao processar envio:", err);
