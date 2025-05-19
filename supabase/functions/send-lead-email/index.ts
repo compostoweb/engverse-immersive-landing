@@ -1,4 +1,3 @@
-
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const corsHeaders = {
@@ -28,8 +27,41 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("Dados recebidos:", { name, email, company, phone, interest });
     
-    // Format message content
-    const formattedMessage = `
+    // Format message content in HTML
+    const formattedHtmlMessage = `
+      <h1>Novo Lead do Site</h1>
+      <table style="border-collapse: collapse; width: 100%;">
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd;"><strong>Nome:</strong></td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${name}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd;"><strong>Email:</strong></td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${email}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd;"><strong>Empresa:</strong></td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${company}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd;"><strong>Telefone:</strong></td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${phone}</td>
+        </tr>
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd;"><strong>Interesse:</strong></td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${interest}</td>
+        </tr>
+        ${message ? `
+        <tr>
+          <td style="padding: 8px; border: 1px solid #ddd;"><strong>Mensagem:</strong></td>
+          <td style="padding: 8px; border: 1px solid #ddd;">${message}</td>
+        </tr>
+        ` : ''}
+      </table>
+    `;
+    
+    // Also keep a plain text version as fallback
+    const plainTextMessage = `
       Nome: ${name}
       Email: ${email}
       Empresa: ${company}
@@ -47,12 +79,14 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Enviando e-mail via Resend API...");
     
-    // Using Resend API
+    // Using Resend API with HTML content and reply-to
     const emailData = {
       from: "Engverse Site <no-reply@engverse.com.br>",
       to: ["comercial@engverse.com.br"],
+      reply_to: email, // Add reply-to field with the lead's email
       subject: `Novo Lead - ${company}`,
-      text: formattedMessage,
+      html: formattedHtmlMessage,
+      text: plainTextMessage, // Fallback for email clients that don't support HTML
     };
     
     const response = await fetch('https://api.resend.com/emails', {
